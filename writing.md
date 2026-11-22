@@ -1,4 +1,4 @@
-```
+
 ---
 layout: page
 title: Writing
@@ -10,4 +10,3 @@ permalink: /writing/
 {{ post.date | date: "%B %-d, %Y" }}
 
 {% endfor %}
-```
