@@ -12,7 +12,9 @@ permalink: /microblog-feed.xml
     {% assign shared_posts = site.posts | where: "share_microblog", true %}
     {% for post in shared_posts limit:20 %}
     <item>
-      <title>{{ post.title | xml_escape }}</title>
+      {% if post.title and post.title != "" %}
+<title>{{ post.title | xml_escape }}</title>
+{% endif %}
       <link>{{ post.url | absolute_url | xml_escape }}</link>
       <guid isPermaLink="true">{{ post.url | absolute_url | xml_escape }}</guid>
       <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
