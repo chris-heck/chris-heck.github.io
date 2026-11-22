@@ -1,0 +1,23 @@
+---
+layout: null
+permalink: /microblog-feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.title | xml_escape }} — Selected writing</title>
+    <link>{{ '/' | absolute_url | xml_escape }}</link>
+    <description>Selected essays shared with Micro.blog.</description>
+    <language>en-us</language>
+    {% assign shared_posts = site.posts | where: "share_microblog", true %}
+    {% for post in shared_posts limit:20 %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>{{ post.url | absolute_url | xml_escape }}</link>
+      <guid isPermaLink="true">{{ post.url | absolute_url | xml_escape }}</guid>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      <description>{{ post.content | xml_escape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
